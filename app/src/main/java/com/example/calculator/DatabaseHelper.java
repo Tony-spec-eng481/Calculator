@@ -72,6 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return historyList;
     }
 
+    
     public void clearHistory() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_HISTORY, null, null);

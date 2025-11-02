@@ -123,6 +123,7 @@ Connect an Android device or start an emulator
 Click "Run" or press Shift+F10
 
 🎯 Usage
+
 Basic Arithmetic
 Select "Arithmetic" mode
 
