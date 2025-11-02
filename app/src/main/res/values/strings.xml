@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="select_conversion_type">Select Conversion Type:</string>
+    <string name="arithmetic">Arithmetic</string>
+    <string name="base_converter">Base Converter</string>
+    <string name="base_conversion">Base Conversion</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+    <string name="arithmetic_calculator">Arithmetic Calculator</string>
+    <string name="enter_expression_or_number">Enter expression or number</string>
+    <string name="numbers_0_9">Numbers (0-9)</string>
+    <string name="letters_a_f">Letters (A-F)</string>
+    <string name="_0">0</string>
+    <string name="divide">÷</string>
+    <string name="equals">=</string>
+    <string name="decimal">.</string>
+    <string name="clear_history">Clear History</string>
+    <string name="calculation_history">Calculation History</string>
+    <string name="no_calculation_history_yet">No calculation history yet</string>
+</resources>
