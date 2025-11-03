@@ -82,11 +82,11 @@ Contributions are welcome. A suggested workflow:
 3. Commit changes with clear messages
 4. Open a pull request describing the problem and your solution
 
-Please include unit tests for new logic where applicable.
+
 
 ## License
 
-No license file is included in this repository. If you plan to make the project public, add a `LICENSE` file (for example, MIT or Apache 2.0) to clarify usage and redistribution terms.
+No license file is included in this repository. 
 
 ## Contact
 
@@ -94,4 +94,3 @@ If you have questions, bugs, or feature requests, open an issue in this reposito
 
 ---
 
-_README generated/updated to provide clearer developer and contributor guidance._
