@@ -1,258 +1,97 @@
-Advanced Calculator & Converter App
-A comprehensive Android calculator application that combines arithmetic calculations with advanced base conversion capabilities, featuring a professional UI and history tracking.
+#+ Calculator — Android
 
-🚀 Features
-🔢 Arithmetic Calculator
-Basic operations: Addition (+), Subtraction (-), Multiplication (×), Division (÷)
+A lightweight, polished Android calculator app with built-in base-conversion and a persistent calculation history. The project is implemented in Java, targets Android API 21+, and uses a tabbed UI with separate screens for calculation, history, and app information.
 
-Decimal and fraction calculations
+## Key features
 
-Support for complex expressions with operator precedence
+- Arithmetic calculator with support for complex expressions and operator precedence
+- Base conversion between common bases (binary, octal, decimal, hexadecimal)
+- Perform arithmetic in one base and view results in another
+- Persistent history stored locally (SQLite)
+- Clean, accessible UI with separate number/letter keyboards for hexadecimal input
 
-Real-time input validation
+## Quick start
 
-🔄 Base Converter
-Supported Bases: Binary (2), Octal (8), Decimal (10), Hexadecimal (16)
+Requirements
 
-Conversion Types:
+- JDK 11+ (or the JDK version compatible with your Android toolchain)
+- Android Studio (recommended) or command-line Gradle
+- Android SDK and an emulator or device with USB debugging enabled
 
-Binary ↔ Decimal
+Build and run (PowerShell on Windows)
 
-Hexadecimal ↔ Octal
+1. Open the project in Android Studio and click Run.
+2. Or use the bundled Gradle wrapper from the repository root:
 
-Octal ↔ Binary
+```powershell
+.\gradlew.bat assembleDebug
+.\gradlew.bat installDebug
+```
 
-Hexadecimal ↔ Binary/Decimal
+Run unit tests and instrumentation tests
 
-And all other combinations
+```powershell
+.\gradlew.bat test               # Run local unit tests
+.\gradlew.bat connectedAndroidTest  # Run instrumentation tests on a connected device/emulator
+```
 
-🧮 Advanced Base Arithmetic
-Perform arithmetic operations in any base and get results in any other base
+Create a release build
 
-Examples:
+The repository includes a keystore file named `calculator.jks` (if present) and `gradle.properties` may contain signing configs. Adjust the signing config in `app/build.gradle` or add your own keystore and credentials to `gradle.properties`.
 
-24+30 in Decimal to Binary = 110110
+```powershell
+.\gradlew.bat assembleRelease
+```
 
-1010*11 in Binary to Hexadecimal = 1E
+## Project structure (important files)
 
-A-5 in Hexadecimal to Octal = 5
+- `app/src/main/java/com/example/calculator/` — Java sources
+	- `MainActivity.java` — hosts the ViewPager / TabLayout
+	- `CalculatorFragment.java` — UI + calculation logic
+	- `HistoryFragment.java`, `HistoryAdapter.java` — history screen and adapter
+	- `DatabaseHelper.java`, `CalculationHistory.java` — persistence layer
+	- `InfoFragment.java`, `ViewPagerAdapter.java` — app info and tab wiring
+- `app/src/main/res/` — layouts, drawables, themes, and other resources
+- `app/release/` — release metadata and baseline profiles
+- `gradle/` — version catalog and wrapper config
 
-📱 User Interface
-Three Tab Layout:
+## How it works (high level)
 
-Calculator: Main calculation interface
+- Input is entered via a custom keyboard that adapts to the selected base (numeric vs letter keys)
+- Expressions are parsed and evaluated with operator precedence (calculator logic contained in `CalculatorFragment`)
+- Results can be converted between bases; conversions use decimal as an intermediate when necessary
+- History is stored in a local SQLite database via `DatabaseHelper` and shown with a RecyclerView
 
-History: Track all previous calculations
+## Testing and quality
 
-Info: App information and instructions
+- Unit tests live under `app/src/test/java` and can be executed with the Gradle `test` task.
+- Instrumentation tests (Android tests) live under `app/src/androidTest/java` and can be run with `connectedAndroidTest`.
 
-Toggle Keyboards:
+## Troubleshooting
 
-Number Keyboard (0-9, arithmetic operators)
+- If the app fails to install, ensure developer mode and USB debugging are enabled on your device.
+- If a conversion reports invalid input, check that the characters match the selected base (e.g., only 0/1 for binary).
+- For database issues, clear app data or uninstall/reinstall the app to reset the local database.
 
-Letter Keyboard (A-F for hexadecimal, DEL, CLEAR)
+## Contribution
 
-Professional Design:
+Contributions are welcome. A suggested workflow:
 
-Material Design components
+1. Fork the repository
+2. Create a feature branch (e.g., `feature/convert-improvement`)
+3. Commit changes with clear messages
+4. Open a pull request describing the problem and your solution
 
-Color-coded buttons
+Please include unit tests for new logic where applicable.
 
-Rounded corners and modern styling
+## License
 
-Responsive layout
+No license file is included in this repository. If you plan to make the project public, add a `LICENSE` file (for example, MIT or Apache 2.0) to clarify usage and redistribution terms.
 
-📊 History Management
-Automatic saving of all calculations
+## Contact
 
-Persistent storage using SQLite database
+If you have questions, bugs, or feature requests, open an issue in this repository or contact the maintainer listed in the project metadata.
 
-Clear history functionality
+---
 
-Detailed view with timestamps
-
-🛠️ Technical Specifications
-Architecture
-Language: Java
-
-Minimum SDK: API 21 (Android 5.0)
-
-Architecture: MVC Pattern
-
-Database: SQLite with Room-like wrapper
-
-Components
-MainActivity: Hosts ViewPager2 with TabLayout
-
-CalculatorFragment: Main calculation logic and UI
-
-HistoryFragment: History display and management
-
-InfoFragment: App information
-
-DatabaseHelper: SQLite database operations
-
-CalculationHistory: Data model class
-
-Key Classes
-CalculatorFragment: Handles all calculation logic
-
-DatabaseHelper: Manages local database operations
-
-HistoryAdapter: RecyclerView adapter for history list
-
-ViewPagerAdapter: Manages tab navigation
-
-📥 Installation
-Clone the repository:
-
-bash
-git clone https://github.com/yourusername/calculator-app.git
-Open in Android Studio:
-
-Open Android Studio
-
-Select "Open an existing project"
-
-Navigate to the cloned directory
-
-Build and Run:
-
-Connect an Android device or start an emulator
-
-Click "Run" or press Shift+F10
-
-🎯 Usage
-
-Basic Arithmetic
-Select "Arithmetic" mode
-
-Use number keyboard to input numbers
-
-Use operator buttons (+, -, ×, ÷)
-
-Press "=" to calculate
-
-Base Conversion
-Select "Base Converter" mode
-
-Choose input base from "From" dropdown
-
-Choose output base from "To" dropdown
-
-Enter number (valid for selected input base)
-
-Press "=" to convert
-
-Base Arithmetic
-Select "Base Converter" mode
-
-Choose input and output bases
-
-Enter arithmetic expression using valid characters for input base
-
-Press "=" to calculate and convert result
-
-History Management
-Navigate to "History" tab
-
-View all previous calculations
-
-Use "Clear History" button to remove all records
-
-🎨 UI Components
-Input Fields
-Main Input: Professional styled EditText with blue border
-
-Result Display: Green background for clear visibility
-
-Buttons
-Number Buttons: White background with gray border
-
-Operator Buttons: Blue background
-
-Function Buttons:
-
-Equals: Green
-
-Delete: Red
-
-Clear: Orange
-
-Letter Buttons: Light blue background for hexadecimal input
-
-Keyboard Layout
-text
-Number Keyboard:
-[7] [8] [9] [+]
-[4] [5] [6] [-]
-[1] [2] [3] [×]
-[0] [.] [÷] [=]
-
-Letter Keyboard:
-[A] [B] [C] [D]
-[E] [F] [DEL] [C]
-🔧 Customization
-Adding New Bases
-Update arrays.xml with new base options
-
-Modify getBaseFromSpinner() method
-
-Add conversion logic in convertDecimalToBase()
-
-Styling Changes
-Modify drawable files in res/drawable/
-
-Update colors in res/values/colors.xml
-
-Adjust dimensions in res/values/dimens.xml
-
-Database Modifications
-Update DatabaseHelper.java for schema changes
-
-Modify CalculationHistory.java model class
-
-📊 Performance
-Memory Efficient: Uses RecyclerView for history list
-
-Fast Calculations: Optimized arithmetic algorithms
-
-Smooth UI: Main thread operations kept minimal
-
-Efficient Storage: SQLite with proper indexing
-
-🐛 Troubleshooting
-Common Issues
-Invalid Input Errors: Ensure input matches selected base
-
-Calculation Errors: Check for division by zero
-
-History Not Saving: Verify database permissions
-
-Solutions
-Clear app data if persistent issues occur
-
-Check AndroidManifest.xml for storage permissions
-
-Verify SQLite database path and permissions
-
-🤝 Contributing
-Fork the repository
-
-Create a feature branch
-
-Commit your changes
-
-Push to the branch
-
-Create a Pull Request
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
-🙏 Acknowledgments
-Material Design Components
-
-Android Studio development tools
-
-SQLite database system
+_README generated/updated to provide clearer developer and contributor guidance._
